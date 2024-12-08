@@ -1,0 +1,10 @@
+file: bikeshare-station-info-pin.csv
+file_size: 88692
+pin_hash: 09b6af8fcde57fa3
+type: csv
+title: Capital Bikeshare Station Information
+description: Bike station details from Capital Bikeshare API
+tags: ~
+urls: ~
+created: 20241204T071501Z
+api_version: 1

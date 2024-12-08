@@ -1,0 +1,64 @@
+2024-12-04 10:07:20.738526 INFO::Starting daily bike station status collection
+2024-12-04 10:07:20.769553 ERROR::An error occurred in safe_collect_daily_status: Missing required environment variable: DB_HOST
+2024-12-04 10:09:18.192757 INFO::Starting daily bike station status collection
+2024-12-04 10:09:29.176873 ERROR::An error occurred in safe_collect_daily_status: could not run statement: Loading local data is disabled; this must be enabled on both the client and server sides
+2024-12-04 10:11:06.701652 INFO::Starting daily bike station status collection
+2024-12-04 10:11:17.503222 INFO::Successfully collected and stored 782 records
+2024-12-04 10:55:30.775659 INFO::Starting daily bike station status collection
+2024-12-04 10:55:41.380473 INFO::Successfully collected and stored 782 records
+2024-12-04 13:45:59.973079 INFO::Starting daily bike station status collection
+2024-12-04 13:46:24.537537 ERROR::An error occurred in safe_collect_daily_status: could not run statement: Loading local data is disabled; this must be enabled on both the client and server sides
+2024-12-04 13:48:33.119915 INFO::Starting daily bike station status collection
+2024-12-04 13:48:43.015491 INFO::Successfully collected and stored 782 records
+2024-12-04 13:48:43.052341 ERROR::An error occurred in safe_collect_daily_status: unused argument (password = Sys.getenv("SMTP_PASSWORD"))
+2024-12-04 13:48:54.715649 INFO::Starting daily bike station status collection
+2024-12-04 13:49:25.181995 INFO::Successfully collected and stored 782 records
+2024-12-04 13:49:25.236443 ERROR::An error occurred in safe_collect_daily_status: unused argument (password = Sys.getenv("SMTP_PASSWORD"))
+2024-12-04 13:49:49.632844 INFO::Starting daily bike station status collection
+2024-12-04 13:50:00.395986 INFO::Successfully collected and stored 782 records
+2024-12-04 13:50:00.453306 ERROR::An error occurred in safe_collect_daily_status: unused argument (password = Sys.getenv("SMTP_PASSWORD"))
+2024-12-04 13:54:30.923219 INFO::Starting daily bike station status collection
+2024-12-04 13:54:40.588653 INFO::Successfully collected and stored 782 records
+2024-12-04 13:54:40.637755 ERROR::An error occurred in safe_collect_daily_status: could not find function "smtp_creds"
+2024-12-04 14:07:22.588155 INFO::Starting daily bike station status collection
+2024-12-04 14:08:04.298388 INFO::Successfully collected and stored 782 records
+2024-12-04 14:08:04.366946 ERROR::An error occurred in safe_collect_daily_status: could not find function "smtp_creds"
+2024-12-04 14:14:38.242669 INFO::Starting daily bike station status collection
+2024-12-04 14:15:17.082514 INFO::Successfully collected and stored 782 records
+2024-12-04 14:15:17.108436 ERROR::An error occurred in safe_collect_daily_status: unused argument (password = Sys.getenv("SMTP_PASSWORD"))
+2024-12-04 16:18:04.650565 INFO::Starting daily bike station status collection
+2024-12-04 16:18:25.774672 INFO::Successfully collected and stored 782 records
+2024-12-04 16:45:40.639977 INFO::Starting daily bike station status collection
+2024-12-04 16:46:03.579608 INFO::Successfully collected and stored 782 records
+2024-12-04 16:46:23.122435 INFO::Starting station information collection
+2024-12-04 16:46:31.362836 INFO::Starting daily station status collection
+2024-12-04 16:46:31.366076 INFO::Starting daily bike station status collection
+2024-12-04 16:46:42.975 INFO::Successfully collected and stored 782 records
+2024-12-04 16:46:45.763397 INFO::Verifying data loading
+2024-12-04 16:46:45.934768 INFO::Loaded 1564 station records
+2024-12-04 16:46:45.938017 INFO::Bike share data collection workflow completed successfully
+2024-12-04 21:54:26.827153 INFO::Starting station information collection
+2024-12-04 21:54:57.671091 INFO::Starting daily station status collection
+2024-12-04 21:54:57.795538 INFO::Starting daily bike station status collection
+2024-12-04 21:55:12.614076 ERROR::An error occurred in safe_collect_daily_status: could not run statement: Loading local data is disabled; this must be enabled on both the client and server sides
+2024-12-04 21:55:16.900005 ERROR::Workflow execution failed: safe_collect_daily_status failed
+2024-12-04 22:16:24.61882 INFO::Starting station information collection
+2024-12-04 22:16:32.622581 INFO::Starting daily station status collection
+2024-12-04 22:16:32.626969 INFO::Starting daily bike station status collection
+2024-12-04 22:16:43.268194 INFO::Successfully collected and stored 782 records
+2024-12-04 22:16:46.650649 INFO::Verifying data loading
+2024-12-04 22:16:46.798811 INFO::Loaded 782 station records
+2024-12-04 22:16:46.802024 INFO::Bike share data collection workflow completed successfully
+2024-12-04 22:56:54.593139 INFO::Starting station information collection
+2024-12-04 22:57:00.612099 INFO::Starting daily station status collection
+2024-12-04 22:57:00.616245 INFO::Starting daily bike station status collection
+2024-12-04 22:57:17.018248 INFO::Successfully collected and stored 782 records
+2024-12-04 22:57:28.52729 ERROR::An error occurred in safe_collect_daily_status: Could not resolve hostname [smtp.gmail.com]: Could not resolve host: smtp.gmail.com
+2024-12-04 22:57:39.427507 ERROR::Workflow execution failed: Timeout was reached [smtp.gmail.com]: Connection time-out
+2024-12-04 22:59:07.687906 INFO::Starting station information collection
+2024-12-04 22:59:12.915776 INFO::Starting daily station status collection
+2024-12-04 22:59:12.920077 INFO::Starting daily bike station status collection
+2024-12-04 22:59:23.005562 INFO::Successfully collected and stored 782 records
+2024-12-04 22:59:27.747518 INFO::Verifying data loading
+2024-12-04 22:59:27.886582 INFO::Loaded 782 station records
+2024-12-04 22:59:27.891993 INFO::Bike share data collection workflow completed successfully
