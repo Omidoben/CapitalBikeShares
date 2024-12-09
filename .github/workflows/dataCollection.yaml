@@ -58,12 +58,11 @@ jobs:
           echo "DB_USER=$DB_USER" >> .Renviron
           echo "DB_PASSWORD=$DB_PASSWORD" >> .Renviron
 
-     - name: Grant database permissions
-       run: |
-         mysql -h 127.0.0.1 -u root -prootpassword -e "CREATE USER '${{ secrets.DB_USER }}'@'%' IDENTIFIED BY '${{ secrets.DB_PASSWORD }}';"
-         mysql -h 127.0.0.1 -u root -prootpassword -e "GRANT ALL PRIVILEGES ON bike_share_db.* TO '${{ secrets.DB_USER }}'@'%';"
-         mysql -h 127.0.0.1 -u root -prootpassword -e "FLUSH PRIVILEGES;"
-
+      - name: Grant database permissions
+        run: |
+          mysql -h 127.0.0.1 -u root -prootpassword -e "CREATE USER '${{ secrets.DB_USER }}'@'%' IDENTIFIED BY '${{ secrets.DB_PASSWORD }}';"
+          mysql -h 127.0.0.1 -u root -prootpassword -e "GRANT ALL PRIVILEGES ON bike_share_db.* TO '${{ secrets.DB_USER }}'@'%';"
+          mysql -h 127.0.0.1 -u root -prootpassword -e "FLUSH PRIVILEGES;"
 
       - name: Run Master Workflow Script
         run: |
@@ -77,3 +76,4 @@ jobs:
           git diff --staged --quiet || (git commit -m "Update data using the update_app file" && git push)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
