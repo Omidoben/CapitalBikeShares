@@ -14,6 +14,7 @@ load_most_recent_bike_data <- function() {
     user = Sys.getenv("DB_USER"),
     password = Sys.getenv("DB_PASSWORD"),
     port = 3306,
+    local_infile = 1,
     client.flag = CLIENT_LOCAL_FILES
   )
 
