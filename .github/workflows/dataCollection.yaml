@@ -1,12 +1,13 @@
 name: Bike Share Data Collection
 on:
   schedule:
-    - cron: '0 */4 * * *'
-  workflow_dispatch:
+    - cron: '0 */4 * * *'  # Run every 4 hours
+  workflow_dispatch:  # Allow manual triggering
 
 jobs:
   collect-data:
     runs-on: ubuntu-latest
+
     services:
       mysql:
         image: mysql:latest
@@ -17,7 +18,12 @@ jobs:
           MYSQL_PASSWORD: ${{ secrets.DB_PASSWORD }}
         ports:
           - 3306:3306
-        options: --local-infile=1 --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+          --local-infile=1
 
     permissions:
       contents: write
@@ -25,6 +31,18 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4.2.2
+
+      - name: Configure MySQL
+        run: |
+          sudo mysql -h 127.0.0.1 -u root -prootpassword -e "SET GLOBAL local_infile = 1;"
+          sudo mysql -h 127.0.0.1 -u root -prootpassword -e "SHOW GLOBAL VARIABLES LIKE 'local_infile';"
+
+          # Create user if not exists and grant privileges
+          sudo mysql -h 127.0.0.1 -u root -prootpassword -e "
+            CREATE USER IF NOT EXISTS '${{ secrets.DB_USER }}'@'%' IDENTIFIED BY '${{ secrets.DB_PASSWORD }}';
+            GRANT ALL PRIVILEGES ON bikeshare_data.* TO '${{ secrets.DB_USER }}'@'%';
+            FLUSH PRIVILEGES;
+          "
 
       - name: Install system dependencies
         run: |
@@ -45,10 +63,17 @@ jobs:
         with:
           use-renv: true
 
+      - name: Cache R packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.local/share/renv
+          key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-renv-
+
       - name: Install R packages
         run: |
           Rscript -e "install.packages('renv', repos = 'https://packagemanager.posit.co/cran/latest')"
-          Rscript -e "renv::status()"
           Rscript -e "renv::restore(repos = 'https://packagemanager.posit.co/cran/latest')"
 
       - name: Set up environment variables
@@ -61,14 +86,10 @@ jobs:
           echo "DB_USER=$DB_USER" >> .Renviron
           echo "DB_PASSWORD=$DB_PASSWORD" >> .Renviron
 
-      - name: Grant database permissions
+      - name: Create pins directories
         run: |
-          USER_EXISTS=$(mysql --local-infile=1 -h 127.0.0.1 -u root -prootpassword -e "SELECT COUNT(*) FROM mysql.user WHERE user = '${{ secrets.DB_USER }}';" -s -N)
-          if [ "$USER_EXISTS" -eq 0 ]; then
-            mysql --local-infile=1 -h 127.0.0.1 -u root -prootpassword -e "CREATE USER '${{ secrets.DB_USER }}'@'%' IDENTIFIED BY '${{ secrets.DB_PASSWORD }}';"
-          fi
-          mysql --local-infile=1 -h 127.0.0.1 -u root -prootpassword -e "GRANT ALL PRIVILEGES ON bikeshare_data.* TO '${{ secrets.DB_USER }}'@'%';"
-          mysql --local-infile=1 -h 127.0.0.1 -u root -prootpassword -e "FLUSH PRIVILEGES;"
+          mkdir -p StationInfoPin
+          mkdir -p StationStatusPin
 
       - name: Run Master Workflow Script
         run: |
@@ -78,10 +99,17 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add update_app.R
-          git diff --staged --quiet || (git commit -m "Update data using the update_app file" && git push)
+          git add .
+          git diff --staged --quiet || (git commit -m "Update bike share data" && git push)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-
+      - name: Upload logs as artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: workflow-logs
+          path: |
+            .Rout
+            *.log
 
