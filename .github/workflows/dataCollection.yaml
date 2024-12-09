@@ -11,7 +11,7 @@ jobs:
         image: mysql:latest
         env:
           MYSQL_ROOT_PASSWORD: rootpassword
-          MYSQL_DATABASE: bike_share_db
+          MYSQL_DATABASE: bikeshare_data
           MYSQL_USER: ${{ secrets.DB_USER }}
           MYSQL_PASSWORD: ${{ secrets.DB_PASSWORD }}
         ports:
@@ -58,11 +58,11 @@ jobs:
           echo "DB_USER=$DB_USER" >> .Renviron
           echo "DB_PASSWORD=$DB_PASSWORD" >> .Renviron
 
-      - name: Grant database permissions
-        run: |
-          mysql -h 127.0.0.1 -u root -prootpassword -e "CREATE USER IF NOT EXISTS '${{ secrets.DB_USER }}'@'%' IDENTIFIED BY '${{ secrets.DB_PASSWORD }}';"
-          mysql -h 127.0.0.1 -u root -prootpassword -e "GRANT ALL PRIVILEGES ON bike_share_db.* TO '${{ secrets.DB_USER }}'@'%';"
-          mysql -h 127.0.0.1 -u root -prootpassword -e "FLUSH PRIVILEGES;"
+     - name: Grant database permissions
+       run: |
+         mysql -h 127.0.0.1 -u root -prootpassword -e "CREATE USER '${{ secrets.DB_USER }}'@'%' IDENTIFIED BY '${{ secrets.DB_PASSWORD }}';"
+         mysql -h 127.0.0.1 -u root -prootpassword -e "GRANT ALL PRIVILEGES ON bike_share_db.* TO '${{ secrets.DB_USER }}'@'%';"
+         mysql -h 127.0.0.1 -u root -prootpassword -e "FLUSH PRIVILEGES;"
 
 
       - name: Run Master Workflow Script
