@@ -109,3 +109,11 @@
 2024-12-09 12:36:56.949758 INFO::Verifying data loading
 2024-12-09 12:36:56.965533 INFO::Loaded 783 station records
 2024-12-09 12:36:56.966167 INFO::Bike share data collection workflow completed successfully
+2024-12-09 16:23:46.510225 INFO::Starting station information collection
+2024-12-09 16:23:48.002544 INFO::Starting daily station status collection
+2024-12-09 16:23:48.036457 INFO::Starting daily bike station status collection
+2024-12-09 16:23:50.080548 INFO::Creating bike_station_raw table
+2024-12-09 16:23:50.130571 INFO::Successfully collected and stored 783 records
+2024-12-09 16:23:50.98297 INFO::Verifying data loading
+2024-12-09 16:23:50.999411 INFO::Loaded 783 station records
+2024-12-09 16:23:51.000252 INFO::Bike share data collection workflow completed successfully
