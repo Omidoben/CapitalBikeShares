@@ -23,7 +23,6 @@ jobs:
           --health-interval=10s
           --health-timeout=5s
           --health-retries=3
-          --local-infile=1
 
     permissions:
       contents: write
@@ -35,12 +34,13 @@ jobs:
       - name: Configure MySQL
         run: |
           sudo mysql -h 127.0.0.1 -u root -prootpassword -e "SET GLOBAL local_infile = 1;"
-          sudo mysql -h 127.0.0.1 -u root -prootpassword -e "SHOW GLOBAL VARIABLES LIKE 'local_infile';"
+          sudo mysql -h 127.0.0.1 -u root -prootpassword -e "SHOW VARIABLES LIKE 'local_infile';"
 
           # Create user if not exists and grant privileges
           sudo mysql -h 127.0.0.1 -u root -prootpassword -e "
             CREATE USER IF NOT EXISTS '${{ secrets.DB_USER }}'@'%' IDENTIFIED BY '${{ secrets.DB_PASSWORD }}';
             GRANT ALL PRIVILEGES ON bikeshare_data.* TO '${{ secrets.DB_USER }}'@'%';
+            GRANT FILE ON *.* TO '${{ secrets.DB_USER }}'@'%';
             FLUSH PRIVILEGES;
           "
 
