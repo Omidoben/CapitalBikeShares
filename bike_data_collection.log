@@ -101,6 +101,7 @@
 2024-12-09 10:27:15.695185 INFO::Verifying data loading
 2024-12-09 10:27:15.710695 INFO::Loaded 783 station records
 2024-12-09 10:27:15.71134 INFO::Bike share data collection workflow completed successfully
+<<<<<<< HEAD
 2024-12-09 13:42:08.225743 INFO::Starting station information collection
 2024-12-09 13:42:16.480996 INFO::Starting daily station status collection
 2024-12-09 13:42:16.681411 INFO::Starting daily bike station status collection
@@ -108,3 +109,37 @@
 2024-12-09 13:42:32.193532 INFO::Verifying data loading
 2024-12-09 13:42:32.306739 INFO::Loaded 783 station records
 2024-12-09 13:42:32.310442 INFO::Bike share data collection workflow completed successfully
+=======
+2024-12-09 12:36:52.209977 INFO::Starting station information collection
+2024-12-09 12:36:53.735042 INFO::Starting daily station status collection
+2024-12-09 12:36:53.767708 INFO::Starting daily bike station status collection
+2024-12-09 12:36:55.826589 INFO::Creating bike_station_raw table
+2024-12-09 12:36:55.870635 INFO::Successfully collected and stored 783 records
+2024-12-09 12:36:56.949758 INFO::Verifying data loading
+2024-12-09 12:36:56.965533 INFO::Loaded 783 station records
+2024-12-09 12:36:56.966167 INFO::Bike share data collection workflow completed successfully
+2024-12-09 16:23:46.510225 INFO::Starting station information collection
+2024-12-09 16:23:48.002544 INFO::Starting daily station status collection
+2024-12-09 16:23:48.036457 INFO::Starting daily bike station status collection
+2024-12-09 16:23:50.080548 INFO::Creating bike_station_raw table
+2024-12-09 16:23:50.130571 INFO::Successfully collected and stored 783 records
+2024-12-09 16:23:50.98297 INFO::Verifying data loading
+2024-12-09 16:23:50.999411 INFO::Loaded 783 station records
+2024-12-09 16:23:51.000252 INFO::Bike share data collection workflow completed successfully
+2024-12-09 20:21:15.858384 INFO::Starting station information collection
+2024-12-09 20:21:17.216726 INFO::Starting daily station status collection
+2024-12-09 20:21:17.248769 INFO::Starting daily bike station status collection
+2024-12-09 20:21:19.225691 INFO::Creating bike_station_raw table
+2024-12-09 20:21:19.273416 INFO::Successfully collected and stored 783 records
+2024-12-09 20:21:20.504586 INFO::Verifying data loading
+2024-12-09 20:21:20.520658 INFO::Loaded 783 station records
+2024-12-09 20:21:20.521363 INFO::Bike share data collection workflow completed successfully
+2024-12-10 01:20:57.927024 INFO::Starting station information collection
+2024-12-10 01:20:59.394648 INFO::Starting daily station status collection
+2024-12-10 01:20:59.426492 INFO::Starting daily bike station status collection
+2024-12-10 01:21:01.397721 INFO::Creating bike_station_raw table
+2024-12-10 01:21:01.445972 INFO::Successfully collected and stored 783 records
+2024-12-10 01:21:02.872209 INFO::Verifying data loading
+2024-12-10 01:21:02.888526 INFO::Loaded 783 station records
+2024-12-10 01:21:02.889284 INFO::Bike share data collection workflow completed successfully
+>>>>>>> d1a276f7c71c525ec2f7c97002f4d314419d27f5
